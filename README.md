@@ -24,7 +24,7 @@
 
 *Portafolio web profesional de una sola página (SPA) construido con React. Diseño oscuro tecnológico, animaciones fluidas, cursor personalizado y arquitectura lista para producción.*
 
-[**Ver Demo en Vivo →**](#) &nbsp;·&nbsp; [**Contactar →**](mailto:ryan.hdez27@gmail.com) &nbsp;·&nbsp; [**LinkedIn →**](https://linkedin.com/in/ryan-hernandez)
+[**Ver Demo en Vivo →**](#) &nbsp;·&nbsp; [**Contactar →**](mailto:ryan.hdez27@gmail.com) &nbsp;·&nbsp; [**LinkedIn →**](https://www.linkedin.com/in/ryanhdez)
 
 </div>
 
@@ -455,8 +455,8 @@ projects: [
 Ingeniero de Software · Bogotá, Colombia 🇨🇴
 
 [![Email](https://img.shields.io/badge/Email-ryan.hdez27@gmail.com-00d4ff?style=flat-square&logo=gmail&logoColor=white)](mailto:ryan.hdez27@gmail.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-ryan--hernandez-0077B5?style=flat-square&logo=linkedin)](https://linkedin.com/in/ryan-hernandez)
-[![GitHub](https://img.shields.io/badge/GitHub-ryan--hernandez-181717?style=flat-square&logo=github)](https://github.com/ryan-hernandez)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-ryan--hernandez-0077B5?style=flat-square&logo=linkedin)](https://linkedin.com/in/ryanhdez)
+[![GitHub](https://img.shields.io/badge/GitHub-ryan--hernandez-181717?style=flat-square&logo=github)](https://github.com/RyanHdez27)
 
 </div>
 
