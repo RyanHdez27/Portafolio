@@ -1,0 +1,11 @@
+node_modules
+build
+.git
+.gitignore
+README.md
+Dockerfile
+.dockerignore
+.agents
+.env
+skills-lock.json
+package-lock.json (might be needed for build, but node_modules is not)
