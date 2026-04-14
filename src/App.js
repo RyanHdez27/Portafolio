@@ -18,6 +18,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
+import { MessageCircle, FileText } from "lucide-react";
 
 // ─── PALETA Y VARIABLES DE DISEÑO ───────────────────────────
 const COLORS = {
@@ -682,6 +683,9 @@ const Hero = () => {
             animation: "fadeUp 0.7s ease 0.8s forwards",
           }}>
             <a href="#proyectos" className="btn btn-primary">Ver Proyectos →</a>
+            <a href="./hv.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-outline">
+              <FileText size={18} /> Hoja de Vida
+            </a>
             <a href="#contacto" className="btn btn-outline">Contactarme</a>
           </div>
 
@@ -1124,7 +1128,7 @@ const Contact = () => {
                 borderRadius: 6, marginBottom: "1rem", fontFamily: "'DM Mono', monospace",
                 fontSize: "0.8rem", color: "#ff5f57",
               }}>
-                ✕ Hubo un error al enviar el mensaje. Pega tus credenciales de EmailJS en App.js.
+                ✕ Hubo un error al enviar el mensaje. Intenta contactarte por medio del botón de whatsapp.
               </div>
             )}
 
@@ -1159,6 +1163,55 @@ const Footer = () => (
   </footer>
 );
 
+// ─── BOTONES FLOTANTES (WHATSAPP Y CV) ───────────────────────
+const FloatingActions = () => {
+  return (
+    <div style={{
+      position: 'fixed',
+      bottom: '2rem',
+      right: '2rem',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '1rem',
+      zIndex: 99,
+    }}>
+
+
+      {/* Botón de WhatsApp */}
+      <a 
+        href="https://wa.me/573143445651?text=Hola%20Ryan,%20vi%20tu%20portafolio%20y%20me%20gustaría%20contactarte."
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Contactar por WhatsApp"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '64px',
+          height: '64px',
+          backgroundColor: '#25D366',
+          color: '#ffffff',
+          border: 'none',
+          borderRadius: '50%',
+          boxShadow: '0 4px 15px rgba(37,211,102,0.4)',
+          cursor: 'none',
+          transition: 'all 0.3s ease',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'translateY(-3px)';
+          e.currentTarget.style.boxShadow = '0 8px 35px rgba(37,211,102,0.6)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'translateY(0)';
+          e.currentTarget.style.boxShadow = '0 4px 35px rgba(37,211,102,0.4)';
+        }}
+      >
+        <MessageCircle size={50} />
+      </a>
+    </div>
+  );
+};
+
 // ─── APP PRINCIPAL ───────────────────────────────────────────
 export default function App() {
   return (
@@ -1176,6 +1229,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <FloatingActions />
     </>
   );
 }
