@@ -584,6 +584,7 @@ const Hero = () => {
     };
     timeout = setTimeout(type, 500);
     return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -710,7 +711,7 @@ const About = () => (
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center" }}>
         {/* Texto */}
         <div>
-          <div className="section-tag">// sobre mí</div>
+          <div className="section-tag">{"// sobre mí"}</div>
           <h2 className="section-title">Construyendo el futuro desde el código</h2>
           <p style={{ color: COLORS.muted, lineHeight: 1.8, fontSize: "0.98rem", marginBottom: "1.5rem" }}>
             {DATA.personal.about}
@@ -774,7 +775,7 @@ const Experience = () => (
   <section id="experiencia">
     <div className="container">
       <div className="section-header">
-        <div className="section-tag">// experiencia profesional</div>
+        <div className="section-tag">{"// experiencia profesional"}</div>
         <h2 className="section-title">Trayectoria técnica</h2>
         <p className="section-sub">Roles que han moldeado mi visión de la ingeniería de software y la infraestructura empresarial.</p>
       </div>
@@ -848,7 +849,7 @@ const Technologies = () => (
   <section id="tecnologias" style={{ background: COLORS.surface }}>
     <div className="container">
       <div className="section-header">
-        <div className="section-tag">// stack tecnológico</div>
+        <div className="section-tag">{"// stack tecnológico"}</div>
         <h2 className="section-title">Herramientas & tecnologías</h2>
         <p className="section-sub">Ecosistema técnico que utilizo para construir soluciones robustas y escalables.</p>
       </div>
@@ -900,7 +901,7 @@ const Projects = () => (
   <section id="proyectos">
     <div className="container">
       <div className="section-header">
-        <div className="section-tag">// proyectos destacados</div>
+        <div className="section-tag">{"// proyectos destacados"}</div>
         <h2 className="section-title">Lo que he construido</h2>
         <p className="section-sub">Proyectos que reflejan mi capacidad para resolver problemas reales con tecnología.</p>
       </div>
@@ -982,7 +983,7 @@ const Certifications = () => (
   <section style={{ background: COLORS.surface }}>
     <div className="container">
       <div className="section-header">
-        <div className="section-tag">// formación y certificaciones</div>
+        <div className="section-tag">{"// formación y certificaciones"}</div>
         <h2 className="section-title">Credenciales</h2>
       </div>
 
@@ -1041,7 +1042,7 @@ const Contact = () => {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "start" }}>
           {/* Info */}
           <div>
-            <div className="section-tag">// contacto</div>
+            <div className="section-tag">{"// contacto"}</div>
             <h2 className="section-title">Hablemos</h2>
             <p style={{ color: COLORS.muted, lineHeight: 1.75, marginBottom: "2.5rem" }}>
               ¿Tienes un proyecto, una oportunidad o simplemente quieres conectar? 
