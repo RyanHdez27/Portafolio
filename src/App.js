@@ -17,6 +17,7 @@
  */
 
 import { useState, useEffect, useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 // ─── PALETA Y VARIABLES DE DISEÑO ───────────────────────────
 const COLORS = {
@@ -1022,18 +1023,28 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    /* 
-      CONEXIÓN BACKEND NODE.JS:
-      fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form)
+    
+    // NOTA: Para Railway, configura estas variables de entorno en el panel (Settings -> Variables)
+    // o reemplaza los strings "TU_..." por tus keys reales que obtienes en https://dashboard.emailjs.com/
+    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || "TU_SERVICE_ID";
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || "TU_TEMPLATE_ID";
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "TU_PUBLIC_KEY";
+
+    emailjs.send(serviceId, templateId, {
+      from_name: form.name,
+      from_email: form.email,
+      message: form.message,
+    }, publicKey)
+      .then(() => {
+        setStatus("sent");
+        setForm({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus(null), 4000);
       })
-    */
-    // Simulación de envío exitoso
-    setStatus("sent");
-    setForm({ name: "", email: "", message: "" });
-    setTimeout(() => setStatus(null), 4000);
+      .catch((err) => {
+        console.error("Error al enviar el email:", err);
+        setStatus("error");
+        setTimeout(() => setStatus(null), 4500);
+      });
   };
 
   return (
@@ -1102,6 +1113,16 @@ const Contact = () => {
                 fontSize: "0.8rem", color: "#00ff88",
               }}>
                 ✓ Mensaje enviado correctamente. ¡Pronto estaré en contacto!
+              </div>
+            )}
+
+            {status === "error" && (
+              <div style={{
+                padding: "0.75rem 1rem", background: "rgba(255,95,87,0.1)", border: "1px solid rgba(255,95,87,0.3)",
+                borderRadius: 6, marginBottom: "1rem", fontFamily: "'DM Mono', monospace",
+                fontSize: "0.8rem", color: "#ff5f57",
+              }}>
+                ✕ Hubo un error al enviar el mensaje. Pega tus credenciales de EmailJS en App.js.
               </div>
             )}
 
