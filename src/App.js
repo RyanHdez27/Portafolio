@@ -486,11 +486,13 @@ const GlobalStyles = () => {
         transition: width 1.2s ease;
       }
 
-      /* ── MOBILE MENU ── */
+      /* ── MOBILE MENU & RESPONSIVE ── */
       @media (max-width: 768px) {
         .nav-links { display: none; }
-        section { padding: 5rem 0; }
-        .section-title { font-size: 2rem; }
+        section { padding: 4rem 0; }
+        .section-title { font-size: 2.2rem; }
+        .split-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
+        .hero-grid { background-size: 40px 40px; }
       }
     `;
     document.head.appendChild(style);
@@ -709,7 +711,7 @@ const Hero = () => {
 const About = () => (
   <section id="sobre-mi" style={{ background: COLORS.surface }}>
     <div className="container">
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center" }}>
+      <div className="split-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center" }}>
         {/* Texto */}
         <div>
           <div className="section-tag">{"// sobre mí"}</div>
@@ -1050,7 +1052,7 @@ const Contact = () => {
   return (
     <section id="contacto">
       <div className="container">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "start" }}>
+        <div className="split-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "start" }}>
           {/* Info */}
           <div>
             <div className="section-tag">{"// contacto"}</div>
