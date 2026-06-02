@@ -1,7 +1,7 @@
 /**
  * ============================================================
  * PORTAFOLIO PROFESIONAL — RYAN HERNANDEZ
- * Ingeniero de Software | Analista de Virtualización | Full Stack Dev
+ * Ingeniero de Software | Analista de Virtualización | Full Stack Dev | Automatización con IA 
  * ============================================================
  *
  * INSTRUCCIONES DE DESPLIEGUE:
@@ -16,7 +16,7 @@
  * ============================================================
  */
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import emailjs from "@emailjs/browser";
 import { MessageCircle, FileText } from "lucide-react";
 
@@ -51,8 +51,8 @@ const DATA = {
   experience: [
     {
       role: "Analista de Virtualización",
-      company: "Infraestructura Empresarial",
-      period: "2025 — Presente",
+      company: "Positivo S+",
+      period: "2025 — 2026",
       items: [
         "Administración y monitoreo de infraestructura virtual de alta disponibilidad",
         "Optimización de recursos en entornos VMware Esxi, Oracle KVM y OVM",
@@ -62,8 +62,8 @@ const DATA = {
       tech: ["VMware", "Oracle KVM y OVM", "Teams", "Ssh", "VADP"],
     },
     {
-    role: "Administrador de Plataformas",
-      company: "Servicios TI",
+      role: "Administrador de Plataformas",
+      company: "Positivo S+",
       period: "2024 — 2025",
       items: [
         "Gestión de incidentes y continuidad operativa de servicios críticos",
@@ -75,7 +75,7 @@ const DATA = {
     },
     {
       role: "Desarrollador Full Stack",
-      company: "Proyectos y Consultoría",
+      company: "Escoturismo ORJA",
       period: "2023 — 2024",
       items: [
         "Desarrollo de APIs RESTful robustas con Laravel y PHP",
@@ -85,6 +85,43 @@ const DATA = {
       ],
       tech: ["React", "Laravel", "MySQL", "PostgreSQL", "REST APIs"],
     },
+  ],
+
+  freelance: [
+    {
+      role: "Desarrollador Full Stack & Analista de datos",
+      company: "Inalumh SAS / Freelance",
+      period: "2025 — Presente",
+      items: [
+        "Desarrollo e implementación de plataformas web a medida para PyMEs locales.",
+        "Automatización de procesos administrativos con scripts de Python e integración de la API de OpenAI.",
+        "Configuración y optimización de servidores VPS, hosting y despliegues en la nube.",
+        "Integración de pasarelas de pago y desarrollo de dashboards de control."
+      ],
+      tech: ["Node.js", "React", "Python", "Docker", "VPS", "APIs REST"],
+    },
+    {
+      role: "Especialista en Automatización de Procesos",
+      company: "Freelance",
+      period: "2024 — 2025",
+      items: [
+        "Creación de chatbots inteligentes integrados con WhatsApp API para soporte automatizado.",
+        "Desarrollo de scrapers y analizadores de datos utilizando Pandas y Python.",
+        "Migración e integración de bases de datos relacionales con cero pérdida de datos."
+      ],
+      tech: ["Python", "Selenium", "PostgreSQL", "WhatsApp API", "OpenAI"],
+    },
+        {
+      role: "Desarrollador Full Stack & Lider Tecnico",
+      company: "Escoturismo ORJA",
+      period: "2023 — 2024",
+      items: [
+        "Creación de chatbots inteligentes integrados con WhatsApp API para soporte automatizado.",
+        "Desarrollo de scrapers y analizadores de datos utilizando Pandas y Python.",
+        "Migración e integración de bases de datos relacionales con cero pérdida de datos."
+      ],
+      tech: ["Python", "Selenium", "PostgreSQL", "WhatsApp API", "OpenAI"],
+    }
   ],
 
   techStack: [
@@ -128,79 +165,150 @@ const DATA = {
 
   projects: [
     {
-      title: "TechFlow — Dashboard Full Stack",
+      title: "Inalumh — Plataforma & Cotizador",
       description:
-        "Plataforma de gestión empresarial con autenticación JWT, dashboard en tiempo real, gestión de usuarios y módulo de reportes. Arquitectura desacoplada con React en el frontend y Node.js + PostgreSQL en el backend.",
-      tech: ["React", "Node.js", "PostgreSQL", "JWT", "REST API"],
+        "Plataforma web corporativa y sistema de cotización inteligente con arquitectura SPA optimizada. Incluye motor de cotización avanzado con cross-sell, generación de presupuestos en PDF y flujos automatizados de envío por WhatsApp y EmailJS.",
+      tech: ["React 18", "Vite", "Tailwind 4", "Supabase", "Radix UI", "EmailJS"],
       color: "#00d4ff",
       icon: "⬡",
-      type: "Full Stack",
-      highlights: ["Auth JWT", "Real-time charts", "Role-based access"],
+      type: "Freelance",
+      highlights: ["Cotizador PDF", "Supabase BaaS", "WhatsApp API"],
+      link: "https://inalumhcom-production.up.railway.app",
+    },
+    {
+      title: "Fura Intelligence — Web Corporativa",
+      description:
+        "Plataforma web premium con animaciones fluidas, componentes interactivos altamente accesibles y diseño responsivo de alto rendimiento. Conexión automatizada de contactos mediante EmailJS y persistencia de datos seguros.",
+      tech: ["React 18", "TypeScript", "Vite", "Tailwind 4", "Framer Motion"],
+      color: "#f472b6",
+      icon: "◆",
+      type: "Freelance",
+      highlights: ["Diseño Premium", "Framer Motion", "SEO Avanzado"],
+      link: "https://fura-intelligence.up.railway.app",
+    },
+    {
+      title: "Portfolio & Plataforma de Demos",
+      description:
+        "Portafolio profesional y sandbox interactivo con integración de APIs de OpenAI para demostración de herramientas inteligentes. Desplegado con CI/CD automático, base de datos persistente y panel de contacto.",
+      tech: ["Next.js", "Tailwind", "OpenAI API", "Node.js", "PostgreSQL"],
+      color: "#fbbf24",
+      icon: "◈",
+      type: "Proyecto Propio",
+      highlights: ["Herramientas de IA", "Next.js Framework", "Railway Cloud"],
+      link: "https://ryanhdez.up.railway.app",
     },
     {
       title: "AutoBot — Automatización con Python",
       description:
-        "Sistema de automatización inteligente que procesa y clasifica datos de múltiples fuentes usando IA. Genera reportes automáticos, envía alertas por email y reduce tareas manuales en un 80%.",
+        "Sistema de automatización inteligente que procesa y clasifica datos de múltiples fuentes usando IA. Genera reportes automáticos, envía alertas por email y reduce tareas manuales operativas en un 80%.",
       tech: ["Python", "OpenAI API", "Pandas", "FastAPI", "SQLite"],
       color: "#00ffaa",
-      icon: "◈",
+      icon: "⚙",
       type: "IA & Automatización",
       highlights: ["IA integrada", "Reducción 80% tareas", "Auto-reporting"],
+      link: "https://ryanhdez.up.railway.app",
     },
     {
       title: "DataVision — BI Analytics Platform",
       description:
-        "Solución de análisis de datos empresarial con integración Power BI, procesamiento con Apache Spark y visualizaciones interactivas. Conecta múltiples fuentes de datos para insights accionables en tiempo real.",
+        "Solución de análisis de datos empresarial con integración Power BI, procesamiento distribuido con Apache Spark y visualizaciones interactivas. Conecta múltiples fuentes para insights accionables en tiempo real.",
       tech: ["Power BI", "Apache Spark", "Python", "SQL", "Azure"],
       color: "#a78bfa",
-      icon: "◆",
+      icon: "📊",
       type: "Data & BI",
       highlights: ["Multi-source ETL", "Real-time BI", "Executive dashboards"],
+      link: "",
     },
   ],
 
   certifications: [
     {
+      title: "Ingeniería de Software",
+      issuer: "Universidad — En espera de ceremonia",
+      year: "2025",
+      icon: "🎓",
+      color: "#ff6b35",
+      link: "https://linkedin.com/in/ryanhdez",
+    },
+    {
       title: "Desarrollo Web Full Stack",
       issuer: "Talento Tech",
       year: "2024",
-      icon: "⬡",
+      icon: "💻",
       color: "#00d4ff",
+      link: "./talento tech.pdf",
+    },
+    {
+      title: "Introduction to Data Science",
+      issuer: "Cisco Networking Academy",
+      year: "2025",
+      icon: "📊",
+      color: "#00b8d4",
+      link: "https://www.credly.com/earner/earned/badge/2de2a0e9-22dd-4324-a771-50532ddceb1d",
+    },
+    {
+      title: "AWS Security Best Practices",
+      issuer: "AWS Training & Certification",
+      year: "2025",
+      icon: "🛡️",
+      color: "#FF9900",
+      link: "./aws.pdf",
+    },
+    {
+      title: "Artificial Intelligence Fundamentals",
+      issuer: "IBM - Skills Build",
+      year: "2025",
+      icon: "🤖",
+      color: "#00d4ff",
+      link: "https://www.credly.com/earner/earned/badge/36fcfa6b-fd75-48fc-a94d-403236ed9d41",
+    },
+    {
+      title: "AI Fundamentals",
+      issuer: "Cisco Networking Academy",
+      year: "2025",
+      icon: "🤖",
+      color: "#00d4ff",
+      link: "https://www.credly.com/earner/earned/badge/8950c5b1-c6c2-4379-923f-e32c1fccad38",
+    },
+    {
+      title: "OS Basics & Networking",
+      issuer: "Cisco Networking Academy",
+      year: "2024",
+      icon: "▣",
+      color: "#a78bfa",
+      link: "https://www.credly.com/earner/earned/badge/d176f8b0-2565-4113-913f-c144e09b118f",
+    },
+    {
+      title: "Scrum Foundation Professional Certification",
+      issuer: "Certiprof",
+      year: "2024",
+      icon: "📋",
+      color: "#ff6b35",
+      link: "https://www.credly.com/earner/earned/badge/d85ddb31-4128-4414-90a3-cae4d9025e3a",
     },
     {
       title: "JavaScript Essentials",
       issuer: "Cisco Networking Academy",
       year: "2023",
-      icon: "◉",
+      icon: "📜",
       color: "#fbbf24",
+      link: "https://www.credly.com/earner/earned/badge/2d1341b7-33b8-49c5-b0a6-127f43f55efc",
     },
     {
-      title: "Python Essentials 1 & 2",
+      title: "Python Essentials",
       issuer: "Cisco Networking Academy",
       year: "2023",
       icon: "◈",
       color: "#00ffaa",
+      link: "https://www.credly.com/earner/earned/badge/c115cbfa-d634-48a9-9db4-1fe16024a9c4",
     },
     {
       title: "C++ Fundamentals",
       issuer: "Cisco Networking Academy",
       year: "2023",
-      icon: "◆",
+      icon: "⧉",
       color: "#f472b6",
-    },
-    {
-      title: "OS Basics & Networking",
-      issuer: "Cisco Networking Academy",
-      year: "2023",
-      icon: "▣",
-      color: "#a78bfa",
-    },
-    {
-      title: "Ingeniería de Software",
-      issuer: "Universidad — En curso",
-      year: "2025",
-      icon: "⊕",
-      color: "#ff6b35",
+      link: "/c++.pdf",
     },
   ],
 };
@@ -416,6 +524,7 @@ const GlobalStyles = () => {
       }
       .card:hover { border-color: var(--card-color, ${COLORS.accent}); transform: translateY(-4px); }
       .card:hover::before { opacity: 1; }
+      .card:hover .cert-link-arrow { opacity: 0.9 !important; transform: translate(1px, -1px); }
 
       /* ── TECH BADGES ── */
       .tech-badge {
@@ -487,6 +596,80 @@ const GlobalStyles = () => {
         transition: width 1.2s ease;
       }
 
+      .experience-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3.5rem;
+        align-items: start;
+      }
+      @media (max-width: 992px) {
+        .experience-grid {
+          grid-template-columns: 1fr;
+          gap: 4rem;
+        }
+      }
+
+      .exp-desktop-view {
+        display: block;
+      }
+      .exp-mobile-view {
+        display: none;
+      }
+      @media (max-width: 992px) {
+        .exp-desktop-view {
+          display: none;
+        }
+        .exp-mobile-view {
+          display: block;
+        }
+      }
+
+      /* ── TABLA DE EXPERIENCIA ── */
+      .exp-table-wrapper {
+        overflow-x: auto;
+        border: 1px solid ${COLORS.border};
+        border-radius: 8px;
+        background: ${COLORS.surface};
+      }
+      .exp-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.85rem;
+      }
+      .exp-table th {
+        font-family: 'DM Mono', monospace;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        background: ${COLORS.surfaceAlt};
+        color: ${COLORS.accent};
+        padding: 0.85rem 1rem;
+        text-align: left;
+        border-bottom: 1px solid ${COLORS.border};
+      }
+      .exp-table td {
+        padding: 0.85rem 1rem;
+        border-bottom: 1px solid rgba(26, 58, 92, 0.4);
+        color: ${COLORS.text};
+        vertical-align: middle;
+      }
+      .exp-table tr:last-child td {
+        border-bottom: none;
+      }
+      .exp-table tr {
+        transition: background 0.2s;
+      }
+      .exp-table tr:hover {
+        background: rgba(0, 212, 255, 0.04);
+      }
+      .exp-table.freelance-table th {
+        color: #00ffaa;
+      }
+      .exp-table.freelance-table tr:hover {
+        background: rgba(0, 255, 170, 0.04);
+      }
+
       /* ── MOBILE MENU & RESPONSIVE ── */
       @media (max-width: 768px) {
         .nav-links { display: none; }
@@ -494,6 +677,13 @@ const GlobalStyles = () => {
         .section-title { font-size: 2.2rem; }
         .split-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
         .hero-grid { background-size: 40px 40px; }
+      }
+
+      /* ── DESACTIVAR CURSOR EN PANTALLAS TÁCTILES ── */
+      @media (hover: none) {
+        .cursor, .cursor-ring { display: none !important; }
+        body { cursor: auto !important; }
+        nav, .nav-logo, .nav-links a, .btn, .card, .form-input, .form-textarea, a, button { cursor: auto !important; }
       }
     `;
     document.head.appendChild(style);
@@ -530,6 +720,90 @@ const CustomCursor = () => {
   );
 };
 
+// ─── BANNER DE BIENVENIDA PERSONALIZADO ────────────────────────
+const PersonalizedGreeting = ({ name, company, type }) => {
+  const [visible, setVisible] = useState(true);
+
+  if (!visible || (!name && !company)) return null;
+
+  let roleText = "mi perfil profesional";
+  if (type === "fs" || type === "fullstack") roleText = "mi experiencia como Desarrollador Full Stack";
+  else if (type === "vz" || type === "virtualizacion") roleText = "mi experiencia en Virtualización e Infraestructura";
+  else if (type === "ia") roleText = "mis proyectos de Automatización con IA";
+
+  let greeting = "";
+  if (name && company) {
+    greeting = `¡Hola, ${name}! 👋 Bienvenido. Diseñé esta vista personalizada para mostrarte cómo ${roleText} puede aportar valor a ${company}.`;
+  } else if (name) {
+    greeting = `¡Hola, ${name}! 👋 Bienvenido. Explora mi portafolio para ver cómo mi experiencia técnica puede sumarse a tus proyectos.`;
+  } else if (company) {
+    greeting = `¡Hola! 👋 Bienvenidos, equipo de ${company}. Preparé este portafolio destacando cómo mis habilidades técnicas se alinean con su visión empresarial.`;
+  }
+
+  return (
+    <div style={{
+      position: "fixed",
+      top: "80px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      width: "90%",
+      maxWidth: "800px",
+      background: "rgba(10, 22, 40, 0.95)",
+      backdropFilter: "blur(20px)",
+      border: `1px solid ${COLORS.accent}`,
+      borderRadius: "12px",
+      padding: "1.25rem 2.5rem 1.25rem 1.5rem",
+      boxShadow: `0 8px 32px rgba(0, 212, 255, 0.2), inset 0 0 15px rgba(0, 212, 255, 0.05)`,
+      zIndex: 98,
+      display: "flex",
+      alignItems: "center",
+      gap: "1rem",
+      animation: "fadeUp 0.5s ease forwards",
+    }}>
+      <div style={{
+        width: "8px",
+        height: "8px",
+        borderRadius: "50%",
+        background: COLORS.accent,
+        boxShadow: `0 0 8px ${COLORS.accent}`,
+        flexShrink: 0
+      }} />
+      <p style={{
+        fontFamily: "'DM Sans', sans-serif",
+        fontSize: "0.92rem",
+        color: COLORS.text,
+        lineHeight: 1.5,
+        margin: 0,
+      }}>
+        {greeting}
+      </p>
+      <button
+        onClick={() => setVisible(false)}
+        style={{
+          position: "absolute",
+          top: "50%",
+          right: "1rem",
+          transform: "translateY(-50%)",
+          background: "transparent",
+          border: "none",
+          color: COLORS.muted,
+          fontSize: "1.5rem",
+          cursor: "none",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "4px",
+          transition: "color 0.2s"
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent}
+        onMouseLeave={(e) => e.currentTarget.style.color = COLORS.muted}
+      >
+        ×
+      </button>
+    </div>
+  );
+};
+
 // ─── NAV ────────────────────────────────────────────────────
 const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -557,9 +831,21 @@ const Nav = () => {
 };
 
 // ─── HERO ───────────────────────────────────────────────────
-const Hero = () => {
+const Hero = ({ type }) => {
   const [typed, setTyped] = useState("");
-  const phrases = ["Ingeniero de Software", "Analista de Virtualización", "Desarrollador Full Stack", "Apasionado por la IA"];
+
+  const phrases = useMemo(() => {
+    const base = ["Ingeniero de Software", "Analista de Virtualización", "Desarrollador Full Stack", "Apasionado por la IA"];
+    if (type === "fs" || type === "fullstack") {
+      return ["Desarrollador Full Stack", "Ingeniero de Software", "Analista de Virtualización", "Apasionado por la IA"];
+    } else if (type === "vz" || type === "virtualizacion") {
+      return ["Analista de Virtualización", "Ingeniero de Software", "Desarrollador Full Stack", "Apasionado por la IA"];
+    } else if (type === "ia") {
+      return ["Apasionado por la IA", "Ingeniero de Software", "Analista de Virtualización", "Desarrollador Full Stack"];
+    }
+    return base;
+  }, [type]);
+
   const phraseRef = useRef(0);
   const charRef = useRef(0);
   const deletingRef = useRef(false);
@@ -568,6 +854,7 @@ const Hero = () => {
     let timeout;
     const type = () => {
       const current = phrases[phraseRef.current];
+      if (!current) return;
       if (!deletingRef.current) {
         setTyped(current.slice(0, charRef.current + 1));
         charRef.current++;
@@ -588,8 +875,7 @@ const Hero = () => {
     };
     timeout = setTimeout(type, 500);
     return () => clearTimeout(timeout);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [phrases]);
 
   return (
     <section id="hero" style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative", overflow: "hidden" }}>
@@ -724,7 +1010,7 @@ const About = () => (
             {DATA.personal.about}
           </p>
           <p style={{ color: COLORS.muted, lineHeight: 1.8, fontSize: "0.98rem" }}>
-            Mi pasión radica en crear soluciones que escalen: desde microservicios hasta clústeres de virtualización, 
+            Mi pasión radica en crear soluciones que escalen: desde microservicios hasta clústeres de virtualización,
             siempre con foco en la resiliencia, la automatización y la experiencia del usuario final.
           </p>
         </div>
@@ -778,78 +1064,256 @@ const About = () => (
 );
 
 // ─── EXPERIENCIA ────────────────────────────────────────────
-const Experience = () => (
-  <section id="experiencia">
-    <div className="container">
-      <div className="section-header">
-        <div className="section-tag">{"// experiencia profesional"}</div>
-        <h2 className="section-title">Trayectoria técnica</h2>
-        <p className="section-sub">Roles que han moldeado mi visión de la ingeniería de software y la infraestructura empresarial.</p>
-      </div>
+const Experience = () => {
+  const rowCount = Math.max(DATA.experience.length, DATA.freelance.length);
+  const rows = Array.from({ length: rowCount });
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", position: "relative" }}>
-        {/* Línea vertical */}
-        <div style={{
-          position: "absolute", left: 20, top: 0, bottom: 0, width: 1,
-          background: `linear-gradient(to bottom, ${COLORS.accent}, transparent)`,
-        }} />
+  return (
+    <section id="experiencia">
+      <div className="container">
+        <div className="section-header">
+          <div className="section-tag">{"// trayectoria profesional y proyectos"}</div>
+          <h2 className="section-title">Trayectoria técnica</h2>
+          <p className="section-sub">Mi recorrido profesional combinando roles corporativos y proyectos independientes en una vista compacta.</p>
+        </div>
 
-        {DATA.experience.map((exp, i) => (
-          <div key={i} style={{ paddingLeft: "3.5rem", position: "relative" }}>
-            {/* Punto en la línea */}
-            <div style={{
-              position: "absolute", left: 14, top: 24,
-              width: 13, height: 13,
-              borderRadius: "50%",
-              background: COLORS.bg,
-              border: `2px solid ${COLORS.accent}`,
-              boxShadow: `0 0 12px rgba(0,212,255,0.4)`,
-            }} />
+        {/* VISTA DESKTOP: Una sola tabla unificada con izquierda corporativa y derecha freelance */}
+        <div className="exp-desktop-view">
+          <div className="exp-table-wrapper">
+            <table className="exp-table exp-table-unified">
+              <thead>
+                <tr style={{ borderBottom: `1px solid ${COLORS.border}` }}>
+                  <th colSpan="3" style={{
+                    fontFamily: "'Syne', sans-serif",
+                    fontSize: "1.05rem",
+                    fontWeight: 700,
+                    color: COLORS.accent,
+                    textAlign: "center",
+                    background: `${COLORS.surfaceAlt}`,
+                    padding: "1rem",
+                    borderRight: `2px solid ${COLORS.border}`
+                  }}>
+                    🏢 Trayectoria Corporativa
+                  </th>
+                  <th colSpan="3" style={{
+                    fontFamily: "'Syne', sans-serif",
+                    fontSize: "1.05rem",
+                    fontWeight: 700,
+                    color: "#00ffaa",
+                    textAlign: "center",
+                    background: `${COLORS.surfaceAlt}`,
+                    padding: "1rem"
+                  }}>
+                    🚀 Proyectos & Freelance
+                  </th>
+                </tr>
+                <tr>
+                  {/* Corporativa Headers */}
+                  <th style={{ width: "12%", fontSize: "0.68rem" }}>Periodo</th>
+                  <th style={{ width: "23%", fontSize: "0.68rem" }}>Rol / Empresa</th>
+                  <th style={{ width: "15%", fontSize: "0.68rem", borderRight: `2px solid ${COLORS.border}` }}>Tech</th>
+                  {/* Freelance Headers */}
+                  <th style={{ width: "12%", fontSize: "0.68rem" }}>Periodo</th>
+                  <th style={{ width: "23%", fontSize: "0.68rem" }}>Foco / Cliente</th>
+                  <th style={{ width: "15%", fontSize: "0.68rem" }}>Tech</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((_, i) => {
+                  const corp = DATA.experience[i];
+                  const free = DATA.freelance[i];
+                  return (
+                    <tr key={i}>
+                      {/* CORPORATIVA DATA */}
+                      {corp ? (
+                        <>
+                          <td style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.75rem", color: COLORS.muted }}>
+                            {corp.period}
+                          </td>
+                          <td>
+                            <div style={{ fontWeight: 600, color: COLORS.white, fontSize: "0.88rem" }}>
+                              {corp.role}
+                            </div>
+                            <div style={{ fontSize: "0.78rem", color: COLORS.accentDim, marginTop: "0.15rem" }}>
+                              {corp.company}
+                            </div>
+                          </td>
+                          <td style={{ borderRight: `2px solid ${COLORS.border}` }}>
+                            <div style={{ display: "flex", gap: "0.25rem", flexWrap: "wrap" }}>
+                              {corp.tech.slice(0, 3).map((t) => (
+                                <span key={t} className="tech-badge" style={{ padding: "0.15rem 0.4rem", fontSize: "0.6rem" }}>
+                                  {t}
+                                </span>
+                              ))}
+                              {corp.tech.length > 3 && (
+                                <span className="tech-badge" style={{ padding: "0.15rem 0.4rem", fontSize: "0.6rem", opacity: 0.6 }}>
+                                  +{corp.tech.length - 3}
+                                </span>
+                              )}
+                            </div>
+                          </td>
+                        </>
+                      ) : (
+                        <>
+                          <td style={{ color: COLORS.muted, fontSize: "0.75rem" }}>—</td>
+                          <td>—</td>
+                          <td style={{ borderRight: `2px solid ${COLORS.border}` }}>—</td>
+                        </>
+                      )}
 
-            <div className="card" style={{ "--card-color": COLORS.accent }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1rem", flexWrap: "wrap", gap: "0.5rem" }}>
-                <div>
-                  <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: "1.2rem", fontWeight: 700, color: COLORS.white, marginBottom: "0.25rem" }}>
-                    {exp.role}
-                  </h3>
-                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.78rem", color: COLORS.accentDim }}>
-                    {exp.company}
-                  </div>
-                </div>
-                <div style={{
-                  fontFamily: "'DM Mono', monospace",
-                  fontSize: "0.72rem",
-                  color: COLORS.muted,
-                  background: COLORS.surfaceAlt,
-                  padding: "0.3rem 0.75rem",
-                  borderRadius: 100,
-                  border: `1px solid ${COLORS.border}`,
-                }}>
-                  {exp.period}
-                </div>
+                      {/* FREELANCE DATA */}
+                      {free ? (
+                        <>
+                          <td style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.75rem", color: COLORS.muted }}>
+                            {free.period}
+                          </td>
+                          <td>
+                            <div style={{ fontWeight: 600, color: COLORS.white, fontSize: "0.88rem" }}>
+                              {free.role}
+                            </div>
+                            <div style={{ fontSize: "0.78rem", color: "#00b377", marginTop: "0.15rem" }}>
+                              {free.company}
+                            </div>
+                          </td>
+                          <td>
+                            <div style={{ display: "flex", gap: "0.25rem", flexWrap: "wrap" }}>
+                              {free.tech.slice(0, 3).map((t) => (
+                                <span key={t} className="tech-badge" style={{ color: "#00ffaa", borderColor: "rgba(0,255,170,0.2)", background: "rgba(0,255,170,0.08)", padding: "0.15rem 0.4rem", fontSize: "0.6rem" }}>
+                                  {t}
+                                </span>
+                              ))}
+                              {free.tech.length > 3 && (
+                                <span className="tech-badge" style={{ color: "#00ffaa", borderColor: "rgba(0,255,170,0.2)", background: "rgba(0,255,170,0.08)", padding: "0.15rem 0.4rem", fontSize: "0.6rem", opacity: 0.6 }}>
+                                  +{free.tech.length - 3}
+                                </span>
+                              )}
+                            </div>
+                          </td>
+                        </>
+                      ) : (
+                        <>
+                          <td style={{ color: COLORS.muted, fontSize: "0.75rem" }}>—</td>
+                          <td>—</td>
+                          <td>—</td>
+                        </>
+                      )}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* VISTA MOBILE: Dos tablas separadas que se apilan verticalmente */}
+        <div className="exp-mobile-view">
+          <div className="experience-grid">
+            {/* Columna Izquierda: Experiencia Corporativa */}
+            <div>
+              <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: "1.2rem", fontWeight: 700, color: COLORS.accent, marginBottom: "1.25rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                <span style={{ fontSize: "1.3rem" }}>🏢</span> Trayectoria Corporativa
+              </h3>
+
+              <div className="exp-table-wrapper">
+                <table className="exp-table">
+                  <thead>
+                    <tr>
+                      <th style={{ width: "25%" }}>Periodo</th>
+                      <th style={{ width: "45%" }}>Rol / Empresa</th>
+                      <th style={{ width: "30%" }}>Tech</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {DATA.experience.map((exp, i) => (
+                      <tr key={i}>
+                        <td style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.75rem", color: COLORS.muted }}>
+                          {exp.period}
+                        </td>
+                        <td>
+                          <div style={{ fontWeight: 600, color: COLORS.white, fontSize: "0.88rem" }}>
+                            {exp.role}
+                          </div>
+                          <div style={{ fontSize: "0.78rem", color: COLORS.accentDim, marginTop: "0.15rem" }}>
+                            {exp.company}
+                          </div>
+                        </td>
+                        <td>
+                          <div style={{ display: "flex", gap: "0.25rem", flexWrap: "wrap" }}>
+                            {exp.tech.slice(0, 3).map((t) => (
+                              <span key={t} className="tech-badge" style={{ padding: "0.15rem 0.4rem", fontSize: "0.6rem" }}>
+                                {t}
+                              </span>
+                            ))}
+                            {exp.tech.length > 3 && (
+                              <span className="tech-badge" style={{ padding: "0.15rem 0.4rem", fontSize: "0.6rem", opacity: 0.6 }}>
+                                +{exp.tech.length - 3}
+                              </span>
+                            )}
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
+            </div>
 
-              <ul style={{ listStyle: "none", marginBottom: "1.25rem" }}>
-                {exp.items.map((item, j) => (
-                  <li key={j} style={{ display: "flex", gap: "0.75rem", marginBottom: "0.5rem", color: COLORS.muted, fontSize: "0.92rem", lineHeight: 1.6 }}>
-                    <span style={{ color: COLORS.accent, flexShrink: 0, marginTop: "0.1rem" }}>▸</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            {/* Columna Derecha: Proyectos como Independiente / Freelance */}
+            <div>
+              <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: "1.2rem", fontWeight: 700, color: "#00ffaa", marginBottom: "1.25rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                <span style={{ fontSize: "1.3rem" }}>🚀</span> Proyectos & Freelance
+              </h3>
 
-              <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-                {exp.tech.map((t) => (
-                  <span key={t} className="tech-badge">{t}</span>
-                ))}
+              <div className="exp-table-wrapper">
+                <table className="exp-table freelance-table">
+                  <thead>
+                    <tr>
+                      <th style={{ width: "25%" }}>Periodo</th>
+                      <th style={{ width: "45%" }}>Foco / Cliente</th>
+                      <th style={{ width: "30%" }}>Tech</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {DATA.freelance.map((exp, i) => (
+                      <tr key={i}>
+                        <td style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.75rem", color: COLORS.muted }}>
+                          {exp.period}
+                        </td>
+                        <td>
+                          <div style={{ fontWeight: 600, color: COLORS.white, fontSize: "0.88rem" }}>
+                            {exp.role}
+                          </div>
+                          <div style={{ fontSize: "0.78rem", color: "#00b377", marginTop: "0.15rem" }}>
+                            {exp.company}
+                          </div>
+                        </td>
+                        <td>
+                          <div style={{ display: "flex", gap: "0.25rem", flexWrap: "wrap" }}>
+                            {exp.tech.slice(0, 3).map((t) => (
+                              <span key={t} className="tech-badge" style={{ color: "#00ffaa", borderColor: "rgba(0,255,170,0.2)", background: "rgba(0,255,170,0.08)", padding: "0.15rem 0.4rem", fontSize: "0.6rem" }}>
+                                {t}
+                              </span>
+                            ))}
+                            {exp.tech.length > 3 && (
+                              <span className="tech-badge" style={{ color: "#00ffaa", borderColor: "rgba(0,255,170,0.2)", background: "rgba(0,255,170,0.08)", padding: "0.15rem 0.4rem", fontSize: "0.6rem", opacity: 0.6 }}>
+                                +{exp.tech.length - 3}
+                              </span>
+                            )}
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
-        ))}
+        </div>
+
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+}
 
 // ─── TECNOLOGÍAS ────────────────────────────────────────────
 const Technologies = () => (
@@ -964,19 +1428,66 @@ const Projects = () => (
               ))}
             </div>
 
-            {/* Tech */}
-            <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap", paddingTop: "1rem", borderTop: `1px solid ${COLORS.border}` }}>
-              {project.tech.map((t) => (
-                <span key={t} style={{
-                  fontFamily: "'DM Mono', monospace",
-                  fontSize: "0.7rem",
-                  color: project.color,
-                  background: `${project.color}10`,
-                  border: `1px solid ${project.color}25`,
-                  padding: "0.2rem 0.6rem",
-                  borderRadius: 4,
-                }}>{t}</span>
-              ))}
+            {/* Tech & Action Link */}
+            <div style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              paddingTop: "1rem",
+              borderTop: `1px solid ${COLORS.border}`,
+              marginTop: "auto"
+            }}>
+              <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap", flex: 1 }}>
+                {project.tech.map((t) => (
+                  <span key={t} style={{
+                    fontFamily: "'DM Mono', monospace",
+                    fontSize: "0.7rem",
+                    color: project.color,
+                    background: `${project.color}10`,
+                    border: `1px solid ${project.color}25`,
+                    padding: "0.2rem 0.6rem",
+                    borderRadius: 4,
+                  }}>{t}</span>
+                ))}
+              </div>
+
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "0.3rem",
+                    padding: "0.35rem 0.75rem",
+                    borderRadius: "6px",
+                    background: `${project.color}15`,
+                    border: `1px solid ${project.color}40`,
+                    color: project.color,
+                    fontFamily: "'DM Mono', monospace",
+                    fontSize: "0.72rem",
+                    textDecoration: "none",
+                    fontWeight: 500,
+                    transition: "all 0.2s ease",
+                    marginLeft: "0.75rem",
+                    whiteSpace: "nowrap"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = project.color;
+                    e.currentTarget.style.color = COLORS.bg;
+                    e.currentTarget.style.boxShadow = `0 0 10px ${project.color}50`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = `${project.color}15`;
+                    e.currentTarget.style.color = project.color;
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
+                >
+                  Visitar ↗
+                </a>
+              )}
             </div>
           </div>
         ))}
@@ -996,7 +1507,20 @@ const Certifications = () => (
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1rem" }}>
         {DATA.certifications.map((cert, i) => (
-          <div key={i} className="card" style={{ "--card-color": cert.color, display: "flex", alignItems: "center", gap: "1rem" }}>
+          <a
+            key={i}
+            href={cert.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card"
+            style={{
+              "--card-color": cert.color,
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+              textDecoration: "none"
+            }}
+          >
             <div style={{
               width: 44, height: 44, flexShrink: 0,
               background: `${cert.color}15`,
@@ -1008,14 +1532,15 @@ const Certifications = () => (
               {cert.icon}
             </div>
             <div>
-              <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "0.95rem", color: COLORS.white, marginBottom: "0.2rem" }}>
+              <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "0.95rem", color: COLORS.white, marginBottom: "0.2rem", display: "flex", alignItems: "center", gap: "0.25rem" }}>
                 {cert.title}
+                <span style={{ fontSize: "0.7rem", opacity: 0.5, transition: "all 0.25s ease", display: "inline-block" }} className="cert-link-arrow">↗</span>
               </div>
               <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.72rem", color: COLORS.muted }}>
                 {cert.issuer} · {cert.year}
               </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
@@ -1027,9 +1552,65 @@ const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState(null); // 'sent' | 'error' | null
 
+  // WhatsApp Invitation Generator States
+  const [showGenerator, setShowGenerator] = useState(false);
+  const [recName, setRecName] = useState("");
+  const [compName, setCompName] = useState("");
+  const [focus, setFocus] = useState("general");
+  const [copiedLink, setCopiedLink] = useState(false);
+  const [copiedMsg, setCopiedMsg] = useState(false);
+
+  const generatedLink = useMemo(() => {
+    const host = window.location.origin + window.location.pathname;
+    const queryParams = new URLSearchParams();
+    if (recName.trim()) queryParams.set("n", recName.trim());
+    if (compName.trim()) queryParams.set("e", compName.trim());
+    if (focus !== "general") queryParams.set("t", focus);
+    const queryString = queryParams.toString();
+    return host + (queryString ? "?" + queryString : "");
+  }, [recName, compName, focus]);
+
+  const waMessage = useMemo(() => {
+    const greeting = recName.trim() ? `¡Hola *${recName.trim()}*! 👋` : "¡Hola! 👋";
+    const companyText = compName.trim() ? ` para el equipo de *${compName.trim()}*` : "";
+
+    let focusText = "";
+    if (focus === "fullstack") focusText = "mi perfil como *Desarrollador Full Stack*";
+    else if (focus === "virtualizacion") focusText = "mi experiencia en *Virtualización e Infraestructura empresarial*";
+    else if (focus === "ia") focusText = "mis proyectos de *Automatización con Inteligencia Artificial*";
+    else focusText = "mi portafolio técnico";
+
+    return `${greeting} Espero que te encuentres muy bien.
+
+Te comparto mi portafolio profesional, personalizado${companyText}, enfocado en ${focusText}. Me encantaría que pudieras ver lo que he construido.
+
+Puedes ingresar aquí para verlo:
+${generatedLink}
+
+¡Quedo a tu disposición!
+— Ryan Hernandez`;
+  }, [recName, compName, focus, generatedLink]);
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(generatedLink);
+    setCopiedLink(true);
+    setTimeout(() => setCopiedLink(false), 2000);
+  };
+
+  const handleCopyMessage = () => {
+    navigator.clipboard.writeText(waMessage);
+    setCopiedMsg(true);
+    setTimeout(() => setCopiedMsg(false), 2000);
+  };
+
+  const handleSendWhatsApp = () => {
+    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(waMessage)}`;
+    window.open(url, "_blank");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // EmailJS es un servicio 100% del lado del cliente — las keys son públicas por diseño.
     // No necesitan estar en variables de entorno.
     const serviceId = "service_6jn7ep9";
@@ -1062,7 +1643,7 @@ const Contact = () => {
             <div className="section-tag">{"// contacto"}</div>
             <h2 className="section-title">Hablemos</h2>
             <p style={{ color: COLORS.muted, lineHeight: 1.75, marginBottom: "2.5rem" }}>
-              ¿Tienes un proyecto, una oportunidad o simplemente quieres conectar? 
+              ¿Tienes un proyecto, una oportunidad o simplemente quieres conectar?
               Estoy disponible para colaboraciones, roles y consultoría técnica.
             </p>
 
@@ -1092,6 +1673,179 @@ const Contact = () => {
                 </a>
               ))}
             </div>
+
+            {/* Creador de Invitaciones WhatsApp */}
+            <div style={{ marginTop: "2rem" }}>
+              <button
+                type="button"
+                onClick={() => setShowGenerator(!showGenerator)}
+                className="btn btn-outline"
+                style={{ width: "100%", justifyContent: "center", gap: "0.5rem" }}
+              >
+                <span>🛠️</span> {showGenerator ? "Ocultar Creador de Invitaciones" : "Creador de Invitaciones WhatsApp"}
+              </button>
+            </div>
+
+            {showGenerator && (
+              <div className="card fade-up" style={{ marginTop: "1.5rem", borderColor: COLORS.accent, background: COLORS.surfaceAlt }}>
+                <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: COLORS.white, marginBottom: "1rem" }}>
+                  Invitación para WhatsApp
+                </h3>
+
+                <div className="form-group">
+                  <label className="form-label" style={{ fontSize: "0.65rem" }}>Nombre del Reclutador</label>
+                  <input
+                    className="form-input"
+                    style={{ padding: "0.6rem 0.8rem", fontSize: "0.85rem" }}
+                    type="text"
+                    placeholder="Ej. Juan Pérez"
+                    value={recName}
+                    onChange={(e) => setRecName(e.target.value)}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label" style={{ fontSize: "0.65rem" }}>Empresa</label>
+                  <input
+                    className="form-input"
+                    style={{ padding: "0.6rem 0.8rem", fontSize: "0.85rem" }}
+                    type="text"
+                    placeholder="Ej. Google"
+                    value={compName}
+                    onChange={(e) => setCompName(e.target.value)}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label" style={{ fontSize: "0.65rem" }}>Enfoque Técnico</label>
+                  <select
+                    className="form-input"
+                    style={{ padding: "0.6rem 0.8rem", fontSize: "0.85rem", background: COLORS.surface }}
+                    value={focus}
+                    onChange={(e) => setFocus(e.target.value)}
+                  >
+                    <option value="general">General (Ing. de Software)</option>
+                    <option value="fullstack">Desarrollador Full Stack</option>
+                    <option value="virtualizacion">Analista de Virtualización</option>
+                    <option value="ia">Automatización & IA</option>
+                  </select>
+                </div>
+
+                {/* Acciones & Enlaces generados */}
+                <div style={{ marginTop: "1.5rem", borderTop: `1px solid ${COLORS.border}`, paddingTop: "1rem" }}>
+                  <label className="form-label" style={{ fontSize: "0.65rem" }}>Mensaje Formateado</label>
+                  <div style={{
+                    background: COLORS.surface,
+                    border: `1px solid ${COLORS.border}`,
+                    borderRadius: "6px",
+                    padding: "0.75rem",
+                    fontSize: "0.8rem",
+                    color: COLORS.text,
+                    fontFamily: "'DM Sans', sans-serif",
+                    lineHeight: "1.5",
+                    whiteSpace: "pre-wrap",
+                    maxHeight: "120px",
+                    overflowY: "auto",
+                    marginBottom: "1rem"
+                  }}>
+                    {waMessage}
+                  </div>
+
+                  <div style={{ display: "flex", gap: "0.5rem", flexDirection: "column" }}>
+                    <div style={{ display: "flex", gap: "0.5rem" }}>
+                      <button
+                        type="button"
+                        onClick={handleCopyMessage}
+                        className="btn btn-outline"
+                        style={{ flex: 1, padding: "0.5rem", fontSize: "0.75rem", justifyContent: "center" }}
+                      >
+                        {copiedMsg ? "✓ Copiado" : "Copiar Texto"}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleCopyLink}
+                        className="btn btn-outline"
+                        style={{ flex: 1, padding: "0.5rem", fontSize: "0.75rem", justifyContent: "center" }}
+                      >
+                        {copiedLink ? "✓ Copiado" : "Copiar Enlace"}
+                      </button>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={handleSendWhatsApp}
+                      className="btn btn-primary"
+                      style={{ padding: "0.6rem", fontSize: "0.78rem", justifyContent: "center", background: "#25D366", color: "#fff", border: "none" }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "#20ba5a";
+                        e.currentTarget.style.boxShadow = "0 4px 15px rgba(37,211,102,0.3)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "#25D366";
+                        e.currentTarget.style.boxShadow = "none";
+                      }}
+                    >
+                      🚀 Enviar por WhatsApp
+                    </button>
+                  </div>
+                </div>
+
+                {/* Vista Previa de la Tarjeta en WhatsApp */}
+                <div style={{ marginTop: "1.5rem", borderTop: `1px solid ${COLORS.border}`, paddingTop: "1rem" }}>
+                  <label className="form-label" style={{ fontSize: "0.65rem", marginBottom: "0.5rem" }}>Vista Previa en Chat</label>
+                  <div style={{
+                    background: "#0b141a",
+                    borderRadius: "8px",
+                    padding: "0.75rem",
+                    border: "1px solid #222d32",
+                  }}>
+                    <div style={{
+                      background: "#005c4b",
+                      borderRadius: "7.5px 7.5px 0 7.5px",
+                      padding: "0.5rem",
+                      maxWidth: "280px",
+                      marginLeft: "auto",
+                      boxShadow: "0 1px 0.5px rgba(0,0,0,0.13)",
+                      position: "relative",
+                    }}>
+                      <div style={{ fontSize: "0.75rem", color: "#e9edef", lineHeight: "1.4", whiteSpace: "pre-wrap" }}>
+                        {waMessage}
+                      </div>
+
+                      {/* Falsa Tarjeta de Link */}
+                      <div style={{
+                        background: "#025144",
+                        borderRadius: "6px",
+                        overflow: "hidden",
+                        marginTop: "0.5rem",
+                        border: "1px solid rgba(255,255,255,0.08)",
+                      }}>
+                        <img
+                          src="/og-image.png"
+                          alt="Previsualización Portafolio"
+                          style={{ width: "100%", display: "block", objectFit: "cover", height: "110px" }}
+                        />
+                        <div style={{ padding: "0.5rem" }}>
+                          <div style={{ fontSize: "0.72rem", fontWeight: "bold", color: "#e9edef", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                            Ryan Hernandez | Portafolio Profesional
+                          </div>
+                          <div style={{ fontSize: "0.65rem", color: "#8696a0", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden", marginTop: "2px" }}>
+                            Ingeniero de Software y Analista de Virtualización. Explora mis proyectos de desarrollo Full Stack y automatización.
+                          </div>
+                          <div style={{ fontSize: "0.6rem", color: "#8696a0", marginTop: "4px" }}>
+                            ryanhernandez.dev
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{ fontSize: "0.58rem", color: "rgba(255,255,255,0.6)", textAlign: "right", marginTop: "4px" }}>
+                        12:00 PM ✓✓
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            )}
           </div>
 
           {/* Formulario */}
@@ -1178,7 +1932,7 @@ const FloatingActions = () => {
 
 
       {/* Botón de WhatsApp */}
-      <a 
+      <a
         href="https://wa.me/573143445651?text=Hola%20Ryan,%20vi%20tu%20portafolio%20y%20me%20gustaría%20contactarte."
         target="_blank"
         rel="noopener noreferrer"
@@ -1214,13 +1968,28 @@ const FloatingActions = () => {
 
 // ─── APP PRINCIPAL ───────────────────────────────────────────
 export default function App() {
+  const [params, setParams] = useState({ name: "", company: "", type: "" });
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const n = searchParams.get("n") || searchParams.get("name") || "";
+    const e = searchParams.get("e") || searchParams.get("empresa") || searchParams.get("company") || "";
+    const t = searchParams.get("t") || searchParams.get("type") || "";
+    if (n || e || t) {
+      setParams({ name: n, company: e, type: t });
+    }
+  }, []);
+
   return (
     <>
       <GlobalStyles />
       <CustomCursor />
       <Nav />
+      {params.name || params.company ? (
+        <PersonalizedGreeting name={params.name} company={params.company} type={params.type} />
+      ) : null}
       <main>
-        <Hero />
+        <Hero type={params.type} />
         <About />
         <Experience />
         <Technologies />
